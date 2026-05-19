@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">kartkowkapowtora</string>
+    <array name="spin"><item>roslinozerne</item><item>wszystkozerne</item><item>drapiezne</item></array>
 </resources>

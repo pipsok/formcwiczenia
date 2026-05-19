@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,17 +24,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     EditText nazwa;
-    RadioGroup grupa;
+    //RadioGroup grupa;
     SeekBar sekbar;
-    CheckBox checkBox;
+    //CheckBox checkBox;
+    Switch checkBox;
+    Spinner spinner;
     EditText waga;
     Button button;
     ArrayList<String> ryba;
     ArrayAdapter<String> arrayAdapter;
     ListView lista;
-    RadioButton roslinozerne;
-    RadioButton wszystkozerne;
-    RadioButton drapiezne;
+    //RadioButton roslinozerne;
+    //RadioButton wszystkozerne;
+    //RadioButton drapiezne;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         nazwa = findViewById(R.id.editTextText);
-        grupa = findViewById(R.id.grupa);
-        roslinozerne = findViewById(R.id.roslinozerne);
-        wszystkozerne = findViewById(R.id.wszystkozerne);
-        drapiezne = findViewById(R.id.drapiezne);
+        spinner = findViewById(R.id.spinner);
+        //grupa = findViewById(R.id.grupa);
+        //roslinozerne = findViewById(R.id.roslinozerne);
+        //wszystkozerne = findViewById(R.id.wszystkozerne);
+        //drapiezne = findViewById(R.id.drapiezne);
         sekbar = findViewById(R.id.sekbar);
         checkBox = findViewById(R.id.checkBox);
+
         waga = findViewById(R.id.editTextNumber);
         button = findViewById(R.id.button);
         lista = findViewById(R.id.lista);
@@ -59,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String radiowynik = "";
+                /*String radiowynik = "";
                 if (roslinozerne.isChecked()){
                     radiowynik = "roslinozerne";
                 }
@@ -68,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(drapiezne.isChecked()){
                     radiowynik = "drapiezne";
-                }
+                }*/
                 String Okres = "";
                 if (checkBox.isChecked()){
                     Okres = "Tak";
@@ -76,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     Okres = "Nie";
                 }
-                String wynik = "Nazwa: "+nazwa.getText().toString()+" ,Sposob: "+radiowynik+" ,Dlugosc: "+sekbar.getProgress()+" ,Czy okres ochronny: "+Okres+" ,Waga: "+waga.getText().toString();
+                String wynik = "Nazwa: "+nazwa.getText().toString()+" ,Sposob: "+spinner.getSelectedItem()+" ,Dlugosc: "+sekbar.getProgress()+" ,Czy okres ochronny: "+Okres+" ,Waga: "+waga.getText().toString();
                 ryba.add(wynik);
                 arrayAdapter.notifyDataSetChanged();
             }
