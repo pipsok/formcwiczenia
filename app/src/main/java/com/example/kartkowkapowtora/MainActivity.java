@@ -2,6 +2,7 @@ package com.example.kartkowkapowtora;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,12 +29,14 @@ public class MainActivity extends AppCompatActivity {
     SeekBar sekbar;
     //CheckBox checkBox;
     Switch checkBox;
-    Spinner spinner;
+    //Spinner spinner;
     EditText waga;
     Button button;
+    ListView listaodz;
     ArrayList<String> ryba;
     ArrayAdapter<String> arrayAdapter;
     ListView lista;
+    String trybodzywania;
     //RadioButton roslinozerne;
     //RadioButton wszystkozerne;
     //RadioButton drapiezne;
@@ -48,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         nazwa = findViewById(R.id.editTextText);
-        spinner = findViewById(R.id.spinner);
+        listaodz = findViewById(R.id.listaodz);
+        //spinner = findViewById(R.id.spinner);
         //grupa = findViewById(R.id.grupa);
         //roslinozerne = findViewById(R.id.roslinozerne);
         //wszystkozerne = findViewById(R.id.wszystkozerne);
@@ -62,6 +66,18 @@ public class MainActivity extends AppCompatActivity {
         ryba = new ArrayList<>();
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ryba);
         lista.setAdapter(arrayAdapter);
+        String []odzywianie = new String[]{
+                "roslinozerne",
+                "wszystkozerne",
+                "drapiezne"
+        };
+        listaodz.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               // Toast.makeText(MainActivity.this,odzywianie[position], Toast.LENGTH_SHORT).show();
+                trybodzywania = odzywianie[position];
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     Okres = "Nie";
                 }
-                String wynik = "Nazwa: "+nazwa.getText().toString()+" ,Sposob: "+spinner.getSelectedItem()+" ,Dlugosc: "+sekbar.getProgress()+" ,Czy okres ochronny: "+Okres+" ,Waga: "+waga.getText().toString();
+                String wynik = "Nazwa: "+nazwa.getText().toString()+" ,Sposob: "+trybodzywania+" ,Dlugosc: "+sekbar.getProgress()+" ,Czy okres ochronny: "+Okres+" ,Waga: "+waga.getText().toString();
                 ryba.add(wynik);
                 arrayAdapter.notifyDataSetChanged();
             }

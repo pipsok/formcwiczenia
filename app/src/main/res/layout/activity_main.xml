@@ -51,12 +51,19 @@
             android:text="drapiezne" />
     </RadioGroup>-->
 
-    <Spinner
+    <!--<Spinner
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/spin"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"/>-->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listaodz"
+        android:entries="@array/spin"/>
+
 
     <TextView
         android:id="@+id/textView2"
